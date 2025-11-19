@@ -10,23 +10,15 @@ import SwiftUI
 struct ContentView: View {
     @State var value = 30.0
     @State var alertVisible = false
+    
+    let game = Game()
     var body: some View {
         ZStack{
             Color("BackgroundColor").ignoresSafeArea()
             VStack{
                 Text("🥖🥖🥖").font(Font.largeTitle)
-                Text("89").font(Font.largeTitle).kerning(-1).fontWeight(.bold)
-                Slider(
-                    value: $value,
-                        in: 1...100,
-                        step: 5
-                    ) {
-                        Text("Speed")
-                    } minimumValueLabel: {
-                        Text("1").fontWeight(.bold)
-                    } maximumValueLabel: {
-                        Text("100").fontWeight(.bold)
-                    }
+                Text("\(game.target)").font(Font.largeTitle).kerning(-1).fontWeight(.bold)
+                SliderView(sliderValue: $value)
                 Text("\(value)").padding()
                 Button("TRY"){
                     value += 1
@@ -42,6 +34,25 @@ struct ContentView: View {
         }.alert("hello", isPresented: $alertVisible, actions: {Button("Got it"){print("hola")}}, message: {Text("first alert")})
         
         
+    }
+}
+
+struct SliderView: View{
+    @Binding var sliderValue:Double
+    
+    var body: some View{
+        
+        Slider(
+            value: $sliderValue,
+                in: 1...100,
+                step: 5
+            ) {
+                Text("Speed")
+            } minimumValueLabel: {
+                Text("1").fontWeight(.bold)
+            } maximumValueLabel: {
+                Text("100").fontWeight(.bold)
+            }
     }
 }
 
