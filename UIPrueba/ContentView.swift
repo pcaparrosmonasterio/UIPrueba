@@ -8,30 +8,36 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var value = 30
     var body: some View {
-        VStack{
-            Text("🥖🥖🥖").font(Font.largeTitle)
-            Text("89").font(Font.largeTitle).kerning(-1).fontWeight(.bold)
-            Slider(
-                value: .constant(50),
-                    in: 1...100,
-                    step: 5
-                ) {
-                    Text("Speed")
-                } minimumValueLabel: {
-                    Text("1").fontWeight(.bold)
-                } maximumValueLabel: {
-                    Text("100").fontWeight(.bold)
-                }
-            Button("TRY"){
-                print("trying")
-            }.font(Font.title3)
-                .padding()
-                .foregroundColor(.white)
-                .background(.blue)
-                .cornerRadius(21)
-                
-        }.padding()
+        ZStack{
+            Color("BackgroundColor").ignoresSafeArea()
+            VStack{
+                Text("🥖🥖🥖").font(Font.largeTitle)
+                Text("\(value)").font(Font.largeTitle).kerning(-1).fontWeight(.bold)
+                Slider(
+                    value: .constant(50),
+                        in: 1...100,
+                        step: 5
+                    ) {
+                        Text("Speed")
+                    } minimumValueLabel: {
+                        Text("1").fontWeight(.bold)
+                    } maximumValueLabel: {
+                        Text("100").fontWeight(.bold)
+                    }
+                Button("TRY"){
+                    value += 1
+                    print("trying")
+                }.font(Font.title3)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(.accent)
+                    .cornerRadius(21)
+                    
+            }.padding()
+        }
+        
         
     }
 }
