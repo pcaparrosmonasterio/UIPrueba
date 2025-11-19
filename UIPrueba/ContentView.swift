@@ -1,0 +1,25 @@
+//
+//  ContentView.swift
+//  UIPrueba
+//
+//  Created by Pablo Caparros Monasterio on 19/11/25.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+            Text("Hello, swift!")
+            Text("hola")
+        }
+        .padding()
+    }
+}
+
+#Preview {
+    ContentView()
+}
